@@ -1,21 +1,13 @@
 {
-  root: 'E:\\wenjuan-start-master\\my-app-react',
+  root: 'D:\\data-collection\\my-app-react',
   registry: 'https://registry.npmmirror.com',
-  pkgs: [
-    {
-      name: '',
-      version: 'E:\\wenjuan-start-master\\my-app-react\\core-js-pure\\features\\global-this',
-      type: 'directory',
-      alias: undefined,
-      arg: [Result]
-    }
-  ],
+  pkgs: [],
   production: false,
   cacheStrict: false,
   cacheDir: null,
   env: {
     npm_config_registry: 'https://registry.npmmirror.com',
-    npm_config_argv: '{"remain":[],"cooked":["--fix-bug-versions","--china","--userconfig=C:\\\\Users\\\\25452\\\\.cnpmrc","--disturl=https://npmmirror.com/mirrors/node","--registry=https://registry.npmmirror.com","core-js-pure/features/global-this"],"original":["--fix-bug-versions","--china","--userconfig=C:\\\\Users\\\\25452\\\\.cnpmrc","--disturl=https://npmmirror.com/mirrors/node","--registry=https://registry.npmmirror.com","core-js-pure/features/global-this"]}',
+    npm_config_argv: '{"remain":[],"cooked":["--fix-bug-versions","--china","--userconfig=C:\\\\Users\\\\25452\\\\.cnpmrc","--disturl=https://npmmirror.com/mirrors/node","--registry=https://registry.npmmirror.com"],"original":["--fix-bug-versions","--china","--userconfig=C:\\\\Users\\\\25452\\\\.cnpmrc","--disturl=https://npmmirror.com/mirrors/node","--registry=https://registry.npmmirror.com"]}',
     npm_config_user_agent: 'npminstall/7.4.0 npm/? node/v21.7.3 win32 x64',
     NODE: 'D:\\nodejs\\node.exe',
     npm_node_execpath: 'D:\\nodejs\\node.exe',
@@ -49,8 +41,8 @@
     npm_config_sharp_binary_host: 'https://cdn.npmmirror.com/binaries/sharp',
     npm_config_sharp_libvips_binary_host: 'https://cdn.npmmirror.com/binaries/sharp-libvips',
     npm_config_robotjs_binary_host: 'https://cdn.npmmirror.com/binaries/robotjs',
-    npm_rootpath: 'E:\\wenjuan-start-master\\my-app-react',
-    INIT_CWD: 'E:\\wenjuan-start-master\\my-app-react',
+    npm_rootpath: 'D:\\data-collection\\my-app-react',
+    INIT_CWD: 'D:\\data-collection\\my-app-react',
     npm_config_cache: 'C:\\Users\\25452\\.npminstall_tarball'
   },
   binaryMirrors: {
@@ -187,7 +179,7 @@
   disableFallbackStore: false,
   workspacesMap: Map(0) {},
   enableWorkspace: false,
-  workspaceRoot: 'E:\\wenjuan-start-master\\my-app-react',
+  workspaceRoot: 'D:\\data-collection\\my-app-react',
   isWorkspaceRoot: true,
   isWorkspacePackage: false,
   strictSSL: true,

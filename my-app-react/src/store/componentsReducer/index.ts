@@ -1,6 +1,6 @@
 import { ComponentPropsType } from './../../components/QuestionComponents'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import produce from 'immer'
+import {produce} from 'immer'
 import { getNextSelectedId, insertNewComponent } from './utils'
 import cloneDeep from 'lodash.clonedeep'
 import { nanoid } from 'nanoid'
