@@ -9,7 +9,7 @@ if (env === 'dev') {
     user: '',
     password: '',
     port: '27017',
-    database: 'data'
+    database: 'localconnect'
   }
 }
 
@@ -20,7 +20,7 @@ if (env === 'production') {
     user: '',
     password: '',
     port: '27017',
-    database: 'data'
+    database: 'localconnect'
   }
 }
 
