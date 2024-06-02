@@ -1,8 +1,3 @@
-/**
- * 描述: 用户相关路由
- * 作者: yoy
- * 日期: 2023-07-20
-*/
 
 const express = require('express')
 const router = express.Router()

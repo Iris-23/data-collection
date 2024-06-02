@@ -17,4 +17,4 @@ export const STAT_COLORS = ['#FF2D2D', '#BE77FF', '#2894FF', '#00EC00', '#EAC100
 
 export const NO_LOGIN_CODE = 401
 
-export const CLIENT_URL = `http://116.62.177.253:8888`
+export const CLIENT_URL = `http://localhost:3000`

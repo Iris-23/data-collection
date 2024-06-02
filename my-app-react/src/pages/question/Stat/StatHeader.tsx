@@ -33,7 +33,6 @@ const StatHeader: FC = () => {
     // 拼接url, 需要参考c端规则
     const url = `${CLIENT_URL}/question/${id}`
 
-
     const QRCodeElem = <div style={{ textAlign: 'center' }}>
       <QRCode value={url} size={150}></QRCode>
     </div>

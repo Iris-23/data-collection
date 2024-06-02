@@ -1,4 +1,4 @@
-const HOST = 'http://localhost:4000' // Mock 的 host
+const HOST = 'http://localhost:3001' // Mock 的 host
 
 export async function get(url: string) {
   const res = await fetch(`${HOST}${url}`)

@@ -42,10 +42,8 @@ export function getNextSelectedId(fe_id: string, componentList: ComponentInfoTyp
  */
 
 export function insertNewComponent(draft: ComponentsStateType, newComponent: ComponentInfoType) {
-  
-  const { selectedId, componentList } = draft
 
-  const index = componentList.findIndex(c => c.fe_id === selectedId)
+  const index = draft.componentList.findIndex(c => c.fe_id === draft.selectedId)
 
   if (index < 0) {
     // 未选中任何组件
