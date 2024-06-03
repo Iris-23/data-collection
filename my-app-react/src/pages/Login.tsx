@@ -1,5 +1,5 @@
 import React, { FC, useEffect } from 'react'
-import { Space, Typography, Form, Input, Button, Checkbox, message } from 'antd'
+import { Space, Typography, Form, Input, Button, Checkbox, Select, message } from 'antd'
 import { UserOutlined } from '@ant-design/icons'
 import { Link } from 'react-router-dom'
 import styles from './Login.module.scss'
@@ -10,24 +10,29 @@ import { useNavigate } from 'react-router-dom'
 import { setToken } from '../utils/user-token'
 
 const { Title } = Typography
+const { Option } = Select
 
 const USERNAME_KEY = 'USERNAME'
 const PASSWORD_KEY = 'PASSWORD'
+const ROLE_KEY = 'ROLE'
 
-function rememberUser(username: string, password: string) {
+function rememberUser(username: string, password: string, role: string) {
   localStorage.setItem(USERNAME_KEY, username)
   localStorage.setItem(PASSWORD_KEY, password)
+  localStorage.setItem(ROLE_KEY,role)
 }
 
-function deleteUserFormStorage(username: string, password: string) {
+function deleteUserFormStorage(username: string, password: string, role: string) {
   localStorage.removeItem(USERNAME_KEY)
   localStorage.removeItem(PASSWORD_KEY)
+  localStorage.removeItem(ROLE_KEY)
 }
 
 function getUserInfoFormStorage() {
   return {
     username: localStorage.getItem(USERNAME_KEY),
     password: localStorage.getItem(PASSWORD_KEY),
+    role: localStorage.getItem(ROLE_KEY)
   }
 }
 
@@ -37,13 +42,13 @@ const Login: FC = () => {
   const nav = useNavigate()
 
   useEffect(() => {
-    const { username, password } = getUserInfoFormStorage()
-    form.setFieldsValue({ username, password })
+    const { username, password, role } = getUserInfoFormStorage()
+    form.setFieldsValue({ username, password, role })
   }, [])
 
   const { run } = useRequest(
-    async (username: string, password: string) => {
-      const data = await loginService(username, password)
+    async (username: string, password: string, role: string) => {
+      const data = await loginService(username, password, role)
       return data
     },
     {
@@ -61,14 +66,14 @@ const Login: FC = () => {
 
   const onFinish = (values: any) => {
 
-    const { username, password, remember } = values
+    const { username, password, role, remember } = values
 
-    run(username, password)
+    run(username, password, role)
 
     if (remember) {
-      rememberUser(username, password)
+      rememberUser(username, password, role)
     } else {
-      deleteUserFormStorage(username, password)
+      deleteUserFormStorage(username, password, role)
     }
 
   }
@@ -105,10 +110,21 @@ const Login: FC = () => {
             <Input.Password />
           </Form.Item>
 
+          <Form.Item
+            label="身份"
+            name="role"
+            rules={[{ required: true, message: '请选择身份!' }]}
+          >
+            <Select>
+              <Option value="student">student</Option>
+              <Option value="teacher">teacher</Option>
+              <Option value="admin">admin</Option>
+            </Select>
+          </Form.Item>
+
           <Form.Item name="remember" valuePropName="checked" wrapperCol={{ offset: 8, span: 16 }}>
             <Checkbox >记住我</Checkbox>
           </Form.Item>
-
 
           <Form.Item wrapperCol={{ offset: 6, span: 16 }}>
             <Space>

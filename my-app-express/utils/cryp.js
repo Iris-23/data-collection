@@ -1,21 +1,11 @@
-const crypto = require('crypto')
-
-// 密匙
-const SECRET_KEY = 'WJio2l_8776#'
-
-// md5 加密
-function md5 (content) {
-  let md5 = crypto.createHash('md5')
-  return md5.update(content).digest('hex')
-}
+const bcrypt = require('bcrypt');
 
 // 加密函数
-function genPassword (password) {
-  const str = `password=${password}&key=${SECRET_KEY}`
-  return md5(str)
+async function genPassword(password) {
+  const hash = await bcrypt.hash(password, 10);
+  return hash;
 }
-
 
 module.exports = {
   genPassword
-}
+};

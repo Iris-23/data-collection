@@ -1,8 +1,4 @@
-/**
- * 描述: 生成Token
- * 作者: yoy
- * 日期: 2023-07-20
-*/
+
 
 const jwt = require('jsonwebtoken')
 const SECRET = 'WeQHnyPeiW' // 密匙

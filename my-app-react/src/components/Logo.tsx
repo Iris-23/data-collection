@@ -28,7 +28,7 @@ const Logo: FC = () => {
           <Title level={1}>
             <FormOutlined />
           </Title>
-          <Title>问卷</Title>
+          <Title>采集表</Title>
         </Space>
       </Link>
     </div>

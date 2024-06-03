@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { Space, Typography, Form, Input, Button, message } from 'antd'
+import { Space, Typography, Form, Input, Button, Select, message } from 'antd'
 import { UserAddOutlined } from '@ant-design/icons'
 import { Link, useNavigate } from 'react-router-dom'
 import styles from './Register.module.scss'
@@ -8,6 +8,7 @@ import { registerService } from '../services/user'
 import { useRequest } from 'ahooks'
 
 const { Title } = Typography
+const { Option } = Select;
 
 const Register: FC = () => {
 
@@ -15,8 +16,8 @@ const Register: FC = () => {
 
   const { run } = useRequest(
     async values => {
-      const { username, password, nickname } = values
-      return await registerService(username, password, nickname)
+      const { username, password, role } = values
+      return await registerService(username, password, role)
     },
     {
       manual: true,
@@ -83,23 +84,26 @@ const Register: FC = () => {
           >
             <Input.Password />
           </Form.Item>
-
-
+          
           <Form.Item
-            label="昵称"
-            name="nickname"
+            label="身份"
+            name="role"
+            rules={[{ required: true, message: '请选择身份!' }]}
           >
-            <Input />
+            <Select>
+              <Option value="student">student</Option>
+              <Option value="teacher">teacher</Option>
+              <Option value="admin">admin</Option>
+            </Select>
           </Form.Item>
-
-
+          
           <Form.Item wrapperCol={{ offset: 6, span: 16 }}>
             <Space>
               <Button type='primary' htmlType='submit'>注册</Button>
               <Link to={LOGIN_PATHNAME}>已有账号,登录</Link>
             </Space>
           </Form.Item>
-
+          
         </Form>
       </div>
     </div>
