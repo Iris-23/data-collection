@@ -6,8 +6,13 @@ const AnswerSchema = Schema({
     type: String,
     require: true,
   },
+  username: {
+    type: String,
+    required: true,
+  },
   answerList: {
-    type: Array
+    type: Array,
+    required: true,
   }
 })
 
@@ -27,9 +32,14 @@ const getAnswerData = async ({ questionId, page, pageSize }) => {
 
 }
 
+const getAnswerByUsername = async (username) => {
+  const answers = await Answer.find({ username });
+  return answers;
+}
 
 module.exports = {
   createAnswerData,
   getAnswerData,
+  getAnswerByUsername,
   Answer
 }

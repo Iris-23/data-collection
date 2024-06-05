@@ -3,7 +3,7 @@ import { Space, Typography, Form, Input, Button, Checkbox, Select, message } fro
 import { UserOutlined } from '@ant-design/icons'
 import { Link } from 'react-router-dom'
 import styles from './Login.module.scss'
-import { REGISTER_PATHNAME, MANAGE_INDEX_PATHNAME } from '../router'
+import { REGISTER_PATHNAME, MANAGE_INDEX_PATHNAME, USAGE_PATHNAME } from '../router'
 import { loginService } from '../services/user'
 import { useRequest } from 'ahooks'
 import { useNavigate } from 'react-router-dom'
@@ -53,12 +53,17 @@ const Login: FC = () => {
     },
     {
       manual: true,
-      onSuccess(result) {
+      onSuccess(result, params) {
         const { token = '' } = result
         setToken(token) // 存储 token
 
         message.success('登录成功')
-        nav(MANAGE_INDEX_PATHNAME) // 导航到“我的问卷”
+        const role = params[2]
+        if (role === 'admin') {
+          nav(MANAGE_INDEX_PATHNAME) // 导航到编辑问卷界面
+        } else {
+          nav(USAGE_PATHNAME) // 导航到“我的问卷”界面
+        }
       },
     }
   )

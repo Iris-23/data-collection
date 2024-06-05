@@ -1,8 +1,3 @@
-/**
- * 描述: 用户验证模块
- * 作者: ymj
- * 日期: 2023-07-19
-*/
 
 const { body, validationResult } = require('express-validator')
 const { existsUser } = require('../db/models/User')

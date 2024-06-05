@@ -5,7 +5,7 @@ function genAnswerInfo(reqBody: any) {
   const answerList: any[] = []
 
   Object.keys(reqBody).forEach(key => {
-    if (key === 'questionId') return
+    if (key === 'questionId' || key === 'username') return // 排除掉 questionId 和 username 字段
     answerList.push({
       componentId: key,
       value: reqBody[key]
@@ -14,23 +14,27 @@ function genAnswerInfo(reqBody: any) {
 
   return {
     questionId: reqBody.questionId || '',
+    username: reqBody.username || '', // 将 username 包含在返回的对象中
     answerList
   }
 }
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {
     // 不是 post 则返回错误
     res.status(200).json({ errno: -1, msg: 'Method 错误' })
   }
 
-
   // 获取并格式化表单数据
-  const answerInfo = genAnswerInfo(req.body)
-
+  const { questionId, username, ...rest } = req.body;
+  const answerInfo = {
+    questionId: questionId || '',
+    username: username || '', // 将 username 包含在 answerInfo 中
+    answerList: Object.keys(rest).map(key => ({
+      componentId: key,
+      value: rest[key]
+    }))
+  };
 
   try {
     // 提交到服务端 Mock
