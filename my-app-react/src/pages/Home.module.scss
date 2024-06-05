@@ -4,10 +4,17 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+  background-color: #f0f2f5; /* 修改背景颜色 */
 
   .info {
     text-align: center;
+
+    .buttonContainer {
+      display: flex;
+      justify-content: center;
+      gap: 10px; /* 按钮之间的间距 */
+      margin-top: 20px; /* 按钮和标题之间的间距 */
+    }
 
     button {
       height: 60px;

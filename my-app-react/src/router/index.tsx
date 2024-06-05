@@ -12,6 +12,7 @@ import NotFound from '../pages/NotFound'
 import List from '../pages/manage/List'
 import Trash from '../pages/manage/Trash'
 import Star from '../pages/manage/Star'
+import Usage from '../pages/Usage'
 import Edit from '../pages/question/Edit'
 import Stat from '../pages/question/Stat'
 
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: 'register',
         element: <Register />
+      },
+      {
+        path: 'usage',
+        element: <Usage />
       },
       {
         path: 'manage',
@@ -84,7 +89,7 @@ export const HOME_PATHNAME = '/'
 export const LOGIN_PATHNAME = '/login'
 export const REGISTER_PATHNAME = '/register'
 export const MANAGE_INDEX_PATHNAME = '/manage/list'
-
+export const USAGE_PATHNAME = '/usage'
 
 export function isLoginOrRegister(pathname: string) {
   if ([LOGIN_PATHNAME, REGISTER_PATHNAME].includes(pathname)) return true
