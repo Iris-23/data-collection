@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux'
 import { logoutReducer } from '../store/userReducer'
 import { message } from 'antd'
 import { removeToken } from '../utils/user-token'
+import { MANAGE_INDEX_PATHNAME } from '../router'
 
 const UserInfo: FC = () => {
 
@@ -30,17 +31,19 @@ const UserInfo: FC = () => {
         <UserOutlined />
         {username}
       </span>
-      <Button type='link' onClick={logout}>
+      {/* <Button type='link' onClick={logout}>
         退出
-      </Button>
+      </Button> */}
+      <Button type="primary" onClick={logout}>退出</Button>
     </>
   )
 
   const Login = (
-    <Link to={LOGIN_PATHNAME}>登录</Link>
+    <Button type="primary" onClick={() => nav(LOGIN_PATHNAME)}>登录</Button>
+    //<Link to={LOGIN_PATHNAME}>登录</Link>
   )
 
-  return <div> {username ? UserInfo : Login} </div>
+  return <div> {username ? UserInfo : ' '} </div>
 }
 
 export default UserInfo

@@ -1,5 +1,4 @@
-
-import React, { FC, useState, useEffect } from 'react';
+import React, { FC, useState } from 'react';
 import QuestionCard from '../components/QuestionCard';
 import styles from './Usage.module.scss';
 import ListSearch from '../components/ListSearch';
@@ -8,7 +7,6 @@ import { Typography, Empty, Spin, Pagination, Input, Button } from 'antd';
 import ListPage from '../components/ListPage';
 import { useTitle } from 'ahooks';
 import { useNavigate } from 'react-router-dom';
-import { getAnswerByUsername } from '../services/usage';
 
 const { Title } = Typography;
 
@@ -19,20 +17,6 @@ const Usage: FC = () => {
   const { list = [], total = 0 } = data;
   const navigate = useNavigate();
   const [urlInput, setUrlInput] = useState('');
-  const [userAnswers, setUserAnswers] = useState<any[]>([]); // 存储用户答案数据的状态
-
-  useEffect(() => {
-    fetchUserAnswers();
-  }, []);
-
-  const fetchUserAnswers = async () => {
-    try {
-      const response = await getAnswerByUsername(username);
-      setUserAnswers(response.data.list); // 假设后端返回的数据结构中包含一个名为list的字段
-    } catch (error) {
-      console.error('Failed to fetch user answers:', error);
-    }
-  };
 
   const handleUrlSubmit = () => {
     if (urlInput.trim() !== '') {
@@ -66,11 +50,11 @@ const Usage: FC = () => {
             <Spin />
           </div>
         )}
-        {!loading && userAnswers.length === 0 && <Empty description="暂无数据" />}
-        {userAnswers.length > 0 &&
-          userAnswers.map((answer: any) => {
-            const { _id } = answer;
-            return <QuestionCard key={_id} {...answer} refresh={refresh} list={list} />;
+        {!loading && list.length === 0 && <Empty description="暂无数据" />}
+        {list.length > 0 &&
+          list.map((q: any) => {
+            const { _id } = q;
+            return <QuestionCard key={_id} {...q} refresh={refresh} list={list} />;
           })}
       </div>
 

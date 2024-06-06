@@ -2,7 +2,6 @@ import PageWrapper from '@/components/PageWrapper'
 import { getQuestionById } from '@/services/question'
 import { getComponent } from '@/components/QuestionComponents'
 import styles from '@/styles/Question.module.scss'
-import UsernameInput from '@/components/QuestionComponents/UsernameInput'
 
 type PropsType = {
   errno: number,
@@ -61,8 +60,6 @@ export default function Question(props: PropsType) {
     <form method='post' action="/api/answer">
       <input type="hidden" name="questionId" value={_id} />
 
-      <UsernameInput />
-      
       {ComponentListElem}
 
       <div className={styles.submitBtnContainer}>
