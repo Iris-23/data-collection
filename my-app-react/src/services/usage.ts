@@ -1,13 +1,10 @@
-// services/api.ts
 
-import axiosInstance from './ajax'; // 引入已经配置好的axios实例
+import axios, { ResDataType } from './ajax'
 
-export const getAnswerByUsername = async (username: string) => {
-  try {
-    const response = await axiosInstance.get(`/answer/${username}`);
-    return response;
-  } catch (error) {
-    console.error('Error fetching answers by username:', error);
-    throw error; // 可以选择处理错误或者进一步抛出
-  }
-};
+export async function getQuestionByUsername(username: string): Promise<ResDataType> {
+  const url = `/api/usage/${username}`
+  const data = (await axios.get(url)) as ResDataType
+  // console.log(data.list)
+  const list = data.list
+  return list
+}

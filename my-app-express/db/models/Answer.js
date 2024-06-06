@@ -33,9 +33,16 @@ const getAnswerData = async ({ questionId, page, pageSize }) => {
 }
 
 const getAnswerByUsername = async (username) => {
-  const answers = await Answer.find({ username });
-  return answers;
-}
+  try {
+    const list = await Answer.find({ username });
+    const total = list.length; // 如果需要总数，可以直接使用数组的长度
+
+    return { total, list };
+  } catch (error) {
+    console.error('Error fetching answers by username:', error);
+    throw error;
+  }
+};
 
 module.exports = {
   createAnswerData,
