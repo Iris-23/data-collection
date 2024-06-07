@@ -18,13 +18,12 @@ interface DecodedToken {
   username?: string;
 }
 
-//获取用户名
+// 获取用户名
 const getUsernameFromJWT = (): string | null => {
   const token = getToken();
   if (token) {
     try {
       const decodedToken: DecodedToken = jwtDecode(token);
-      // console.log(decodedToken.username)
       return decodedToken.username || null;
     } catch (error) {
       console.error('Token decoding failed:', error);
@@ -38,7 +37,7 @@ const Usage: FC = () => {
   useTitle('我的问卷');
   const username = getUsernameFromJWT(); 
   const [loading, setLoading] = useState<boolean>(false);
-  const [userAnswers, setUserAnswers] = useState<ResDataType>({ total: 0, list: [] }); // 使用ResDataType类型
+  const [userAnswers, setUserAnswers] = useState<ResDataType>({ total: 0, list: [] }); // 使用 ResDataType 类型
   const [questions, setQuestions] = useState<any[]>([]); 
   const navigate = useNavigate();
   const [urlInput, setUrlInput] = useState('');
@@ -55,15 +54,28 @@ const Usage: FC = () => {
     setLoading(true);
     try {
       const list = await getQuestionByUsername(username);
-      console.log(list)
+      console.log(list);
       setUserAnswers(list);
 
-      const questionPromises = list.map((answer: any) => 
-        getQuestionService(answer.questionId)
-      );
-      console.log(questionPromises)
-      const questionResponses = await Promise.all(questionPromises);
-      const fetchedQuestions = questionResponses.map(response => response.data);
+      const questionPromises = list.map((answer: any) => getQuestionService(answer.questionId));
+      const questionData = await Promise.all(questionPromises);
+      console.log(questionData);
+
+      const fetchedQuestions = questionData.map((response: ResDataType) => {
+        if (response) {
+          console.log(response);
+          return {
+            questionId: response._id,
+            title: response.title,
+          };
+        } else {
+          console.error('Invalid response data:', response);
+          return {
+            questionId: 'unknown',
+            title: 'Unknown Title',
+          };
+        }
+      });
       setQuestions(fetchedQuestions);
     } catch (error) {
       console.error('Failed to fetch user answers and questions:', error);
@@ -106,15 +118,20 @@ const Usage: FC = () => {
             <Spin />
           </div>
         )}
-        {!loading && userAnswers.length === 0 && <Empty description="暂无数据" />}
-        {userAnswers.length > 0 && userAnswers.map((answer: any) => {
-          const { _id } = answer;
-          return <UsageCard key={_id} {...answer} />;
-        })}
+        {!loading && questions.length === 0 && <Empty description="暂无数据" />}
+        {questions.length > 0 && (
+          <div>
+            {questions.map((question: any) => (
+              <div key={question.questionId} className={styles.card}>
+                <UsageCard {...question} />
+              </div>
+            ))}
+          </div>
+        )}
       </div>
 
       <div className={styles.footer}>
-        <ListPage total={userAnswers.length} />
+        <ListPage total={questions.length} />
       </div>
     </>
   );

@@ -1,51 +1,54 @@
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    border-bottom: 1px solid #e8e8e8;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #e8e8e8;
+}
 
-  .left {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+.left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  .middle {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-  }
+.middle {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
 
-  .right {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-  }
+.right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
 
-  .input-field,
-  .search-field {
-    height: 40px; /* 统一的高度 */
-    width: 300px; /* 统一的宽度 */
-  }
+.input-field,
+.search-field {
+  height: 40px;
+  width: 300px;
+}
 
-  .content {
-    display: flex;
-  }
+.content {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
 
-  .navbar {
-    width: 200px;
-    border-right: 1px solid #e8e8e8;
-    padding: 20px;
-  }
+.card {
+  margin-bottom: 20px;
+  font-size: 40px;
+  line-height: 1.5;
+  padding: 20px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  width: 80%;
+  font-family: 'Arial, sans-serif'; /* 更改字体 */
+}
 
-  .mainContent {
-    flex: 1;
-    padding: 20px;
-  }
-
-  .footer {
-    text-align: center;
-    margin-top: 20px;
-  }
+.footer {
+  text-align: center;
+  margin-top: 20px;
+}

@@ -1,20 +1,18 @@
-// QuestionCard.tsx
-
-import React from 'react';
+import React, { FC } from 'react';
 import { Card } from 'antd';
 
-interface QuestionCardProps {
+interface UsageCardProps {
   questionId: string;
-  // 其他需要展示的问卷信息字段
+  title: string; // 可选的标题字段
 }
 
-const QuestionCard: React.FC<QuestionCardProps> = ({ questionId }) => {
+const UsageCard: FC<UsageCardProps> = ({ questionId, title }) => {
   return (
-    <Card>
+    <Card title={title || questionId} style={{ marginBottom: '20px' }}>
       <p>Question ID: {questionId}</p>
-      {/* 其他问卷信息展示 */}
+      {title && <p>Title: {title}</p>}
     </Card>
   );
 };
 
-export default QuestionCard;
+export default UsageCard;
