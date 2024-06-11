@@ -16,7 +16,7 @@ const MainLayout: FC = () => {
   return (
     <Layout>
       <Header className={styles.header}>
-        <div className={styles.left}>
+        <div className={styles.container}>
           <Logo />
         </div>
         <div className={styles.right}>
@@ -26,7 +26,7 @@ const MainLayout: FC = () => {
       <Layout className={styles.main}>
         <Content>
           {waitingUserData ? (
-            <div style={{ textAlign: 'center', marginTop: '60px' }}>
+            <div style={{ textAlign: 'right', marginTop: '0px' }}>
               <Spin />
             </div>
           ) : (

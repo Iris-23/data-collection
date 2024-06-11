@@ -26,26 +26,23 @@
 
 .input-field,
 .search-field {
-  height: 40px;
-  width: 300px;
+  height: 40px; /* 统一的高度 */
+  width: 300px; /* 统一的宽度 */
 }
 
 .content {
   display: flex;
-  justify-content: center;
+}
+
+.navbar {
+  width: 200px;
+  border-right: 1px solid #e8e8e8;
   padding: 20px;
 }
 
-.card {
-  margin-bottom: 20px;
-  font-size: 40px;
-  line-height: 1.5;
+.mainContent {
+  flex: 1;
   padding: 20px;
-  background-color: #f9f9f9;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  width: 80%;
-  font-family: 'Arial, sans-serif'; /* 更改字体 */
 }
 
 .footer {

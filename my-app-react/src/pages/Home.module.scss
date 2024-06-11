@@ -1,13 +1,20 @@
 .container {
   display: flex;
-  height: calc(100vh - 64px - 65px);
+  height: calc(100vh);
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #f0f2f5; /* 修改背景颜色 */
+  background:-webkit-gradient(linear, 0 0, 0 bottom, from(rgba(164, 185, 229, 0)), to(rgba(11, 70, 142, 0.502))); //可设置透明度
 
   .info {
     text-align: center;
+
+    .buttonContainer {
+      display: flex;
+      justify-content: center;
+      gap: 10px; /* 按钮之间的间距 */
+      margin-top: 20px; /* 按钮和标题之间的间距 */
+    }
 
     button {
       height: 60px;
