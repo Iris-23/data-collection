@@ -6,8 +6,13 @@ const AnswerSchema = Schema({
     type: String,
     require: true,
   },
+  username: {
+    type: String,
+    required: true,
+  },
   answerList: {
-    type: Array
+    type: Array,
+    required: true,
   }
 })
 
@@ -27,9 +32,21 @@ const getAnswerData = async ({ questionId, page, pageSize }) => {
 
 }
 
+const getAnswerByUsername = async (username) => {
+  try {
+    const list = await Answer.find({ username });
+    const total = list.length; // 如果需要总数，可以直接使用数组的长度
+
+    return { total, list };
+  } catch (error) {
+    console.error('Error fetching answers by username:', error);
+    throw error;
+  }
+};
 
 module.exports = {
   createAnswerData,
   getAnswerData,
+  getAnswerByUsername,
   Answer
 }

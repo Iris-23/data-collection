@@ -12,8 +12,8 @@ import NotFound from '../pages/NotFound'
 import List from '../pages/manage/List'
 import Trash from '../pages/manage/Trash'
 import Star from '../pages/manage/Star'
-import Usage from '../pages/Usage'
 import Edit from '../pages/question/Edit'
+import Usage from '../pages/Usage'
 import Stat from '../pages/question/Stat'
 
 

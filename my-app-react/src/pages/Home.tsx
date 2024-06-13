@@ -12,7 +12,7 @@ const Home: FC = () => {
   return (
     <div className={styles.container}>
       <div className={styles.info}>
-        <Title style={{fontSize:60}}>数据采集系统</Title>
+      <Title style={{fontSize:60}}>数据采集系统</Title>
         <div>
           <Button type="primary" onClick={() => nav(MANAGE_INDEX_PATHNAME)}>开始使用</Button>
         </div>

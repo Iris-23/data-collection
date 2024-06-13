@@ -22,20 +22,19 @@ const Logo: FC = () => {
 
 
   return (
-
     <div>
-      <div className={styles.container}>
-      <Link to={pathname}>
-        <Space>
-          {/* logo显示
-          <Title level={1}>
-            <FormOutlined />
-          </Title> */}
-          <Title>软工课设</Title>
-        </Space>
-      </Link>
-      </div>
+    <div className={styles.container}>
+    <Link to={pathname}>
+      <Space>
+        {/* logo显示
+        <Title level={1}>
+          <FormOutlined />
+        </Title> */}
+        <Title>软工课设</Title>
+      </Space>
+    </Link>
     </div>
+  </div>
   )
 }
 

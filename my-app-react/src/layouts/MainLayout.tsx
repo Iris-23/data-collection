@@ -34,7 +34,6 @@ const MainLayout: FC = () => {
           )}
         </Content>
       </Layout>
-      {/* <Footer className={styles.footer}></Footer> */}
     </Layout>
   )
 }

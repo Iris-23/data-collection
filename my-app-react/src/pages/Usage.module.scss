@@ -31,7 +31,12 @@
   }
   
   .content {
+    margin-top: 50px;
+    margin-bottom: 20px;
     display: flex;
+    align-items: center;
+    justify-content: center;   
+    height: 65vh; 
   }
   
   .navbar {

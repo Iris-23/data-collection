@@ -1,10 +1,4 @@
 
-/**
- * 描述: 通用验证模块
- * 作者: ymj
- * 日期: 2023-07-19
-*/
-
 const { validationResult } = require('express-validator')
 const { ErrorModel } = require('../utils/resModel')
 

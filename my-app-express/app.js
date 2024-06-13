@@ -17,14 +17,31 @@ app.use(jwt({
   secret: SECRET, // 签名的密钥
   algorithms: ['HS256']
 }).unless({
-  custom: (req, res, next) => {
+  custom: (req) => {
+    const publicPaths = [
+      '/api/answer',
+      '/api/user/register',
+      '/api/user/login',
+    ];
+
     const reg = /^\/api\/question\/(\w+)$/
     if (reg.test(req.url) && req.method === 'GET') {
-      return true
+      return true;
     }
-    return false
-  },
-  path: ['/api/answer', '/api/user/register', '/api/user/login'] // 不需要 token 认证的白名单
+
+    // 检查 /api/answer/:username 动态路径
+    const answerReg = /^\/api\/answer\/(\w+)$/
+    if (answerReg.test(req.url) && req.method === 'GET') {
+      return true;
+    }
+
+    // 检查是否在公共路径数组中
+    if (publicPaths.includes(req.url) && req.method === 'POST') {
+      return true;
+    }
+
+    return false;
+  }
 }))
 
 //解析请求体

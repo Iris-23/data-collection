@@ -85,7 +85,15 @@ const Login: FC = () => {
 
   return (
     <div className={styles.container}>
-      <div>
+      <div style={{
+        border: '2px solid white',  
+        padding:'25px',
+        borderTopLeftRadius:'50px',
+        borderTopRightRadius:'50px',
+        borderBottomLeftRadius:'50px',
+        borderBottomRightRadius:'50px',
+        backgroundColor: "#f0f0f0"}}>
+        <div>
         <Space>
           <Title level={2}> <UserOutlined /></Title>
           <Title level={2}> 登录</Title>
@@ -139,6 +147,7 @@ const Login: FC = () => {
           </Form.Item>
 
         </Form>
+        </div>
       </div>
     </div>
   )

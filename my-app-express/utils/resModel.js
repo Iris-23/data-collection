@@ -1,8 +1,4 @@
-/**
- * 描述: 返回数据的模型
- * 作者: yoy
- * 日期: 2023-07-20
-*/
+
 
 class BaseModel {
   constructor(data, msg) {
