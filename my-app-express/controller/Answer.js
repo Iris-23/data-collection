@@ -21,5 +21,5 @@ try {
 };
 
 module.exports = {
-  answer
+  answer
 };

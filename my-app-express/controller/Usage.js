@@ -3,7 +3,7 @@ const { getAnswerByUsername } = require('../db/models/Answer');
 
 const getAnswerByUsernameHandler = async (req, res, next) => {
   const { username } = req.params;
-  console.log(username)
+  // console.log('username',username)
   try {
     const answerData = await getAnswerByUsername(username);
     console.log(answerData)
