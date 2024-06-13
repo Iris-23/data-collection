@@ -39,7 +39,7 @@ const ListSearch: FC = () => {
       <Search
         style={{ width: 260 }}
         allowClear
-        size="large"
+        size="middle"
         placeholder="输入关键字"
         onChange={handleChange}
         value={value}
